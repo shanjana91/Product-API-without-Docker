@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>ProductCRUD-1</artifactId>
+	<artifactId>ProductCRUD-2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ProductCRUD-1</name>
+	<name>ProductCRUD-2</name>
 	<packaging>jar</packaging>
 	<description>Demo project for Spring Boot CRUD</description>
 	<properties>
