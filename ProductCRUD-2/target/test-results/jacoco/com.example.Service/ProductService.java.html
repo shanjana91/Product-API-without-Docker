@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProductCRUD-2</a> &gt; <a href="index.source.html" class="el_package">com.example.Service</a> &gt; <span class="el_source">ProductService.java</span></div><h1>ProductService.java</h1><pre class="source lang-java linenums">package com.example.Service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.Entity.Product;
+import com.example.Repository.ProductRepo;
+
+@Service
+<span class="fc" id="L12">public class ProductService {</span>
+	@Autowired
+	private ProductRepo repo; //service--&gt; repository
+	
+	//PUT
+	public Product create(Product product) {
+<span class="fc" id="L18">		Product p=repo.save(product); //default method of JPA to make the data persist in the DB</span>
+<span class="fc" id="L19">		return p;</span>
+	}
+	
+	
+	public List&lt;Product&gt; createproducts(List&lt;Product&gt; products) {
+<span class="nc" id="L24">		List&lt;Product&gt; p=repo.saveAll(products); </span>
+<span class="nc" id="L25">		return p;</span>
+		
+	}
+	
+	//GET
+	public List&lt;Product&gt; getProducts(){
+<span class="fc" id="L31">		List&lt;Product&gt; p=repo.findAll();</span>
+		//System.out.println(p);
+<span class="fc" id="L33">		return p;</span>
+	}
+	
+	public Product getProductByid(int id){
+<span class="fc" id="L37">		Product p=repo.findById(id).orElse(null); //return id , if id not found then return null</span>
+<span class="fc" id="L38">		return p;</span>
+	}
+	
+	public Product getProductByName(String name){
+<span class="fc" id="L42">		Product p=repo.findByName(name); //customized method in JPA (declared in the interface)</span>
+<span class="fc" id="L43">		return p;</span>
+	}
+	
+	//DELETE
+	public String deleteProduct(int id) {
+<span class="fc" id="L48">		repo.deleteById(id);</span>
+<span class="fc" id="L49">		return &quot;{\&quot;message\&quot;:\&quot;Product removed successfully , ID : &quot;+id+&quot;\&quot;}&quot;;</span>
+	}
+	
+	//UPDATE
+	public Product updateProduct(Product product) {
+<span class="fc" id="L54">		Product existing=repo.findById(product.getId()).orElse(null);</span>
+<span class="fc" id="L55">		existing.setName(product.getName());</span>
+<span class="fc" id="L56">		existing.setPrice(product.getPrice());</span>
+<span class="fc" id="L57">		existing.setQuantity(product.getQuantity());</span>
+<span class="fc" id="L58">		Product p=repo.save(existing);</span>
+<span class="fc" id="L59">		return p;</span>
+		
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+ProductCRUD-2,com.example.SwaggerConfig,SwaggerConfig,0,28,0,0,0,5,0,3,0,3
+ProductCRUD-2,com.example,ProductCrud1Application,14,3,0,0,3,1,2,1,2,1
+ProductCRUD-2,com.example.Controller,ProductController,0,37,0,0,0,8,0,8,0,8
+ProductCRUD-2,com.example.Entity,Product,83,93,11,9,0,7,11,13,2,12
+ProductCRUD-2,com.example.Service,ProductService,7,81,0,0,2,17,1,7,1,7

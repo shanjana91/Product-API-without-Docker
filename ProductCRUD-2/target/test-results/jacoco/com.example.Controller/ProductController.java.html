@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProductCRUD-2</a> &gt; <a href="index.source.html" class="el_package">com.example.Controller</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package com.example.Controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Entity.Product;
+import com.example.Service.ProductService;
+
+import io.swagger.annotations.ApiOperation;
+
+@RestController
+<span class="fc" id="L20">public class ProductController {</span>
+
+	@Autowired
+	private ProductService service; // controller --&gt; service
+
+	@ApiOperation(value = &quot;Insert Product Records&quot;, response = Product.class)
+	@PostMapping(&quot;/create&quot;)
+	public Product addProduct(@RequestBody Product product) {
+<span class="fc" id="L28">		return service.create(product);</span>
+	}
+
+	@ApiOperation(value = &quot;Insert more than one Product Records&quot;, response = Product.class)
+	@PostMapping(&quot;/createProducts&quot;)
+	public List&lt;Product&gt; addProducts(@RequestBody List&lt;Product&gt; products) {
+<span class="fc" id="L34">		return service.createproducts(products);</span>
+	}
+
+	@ApiOperation(value = &quot;Retrieve Product Records by ID&quot;, response = Product.class)
+	@GetMapping(&quot;/getById/{id}&quot;)
+	public Product getProductById(@PathVariable int id) {
+<span class="fc" id="L40">		return service.getProductByid(id);</span>
+	}
+
+	@ApiOperation(value = &quot;Retrieve Product Record By name&quot;, response = Product.class)
+	@GetMapping(&quot;/get/{name}&quot;)
+	public Product getProductByName(@PathVariable String name) {
+<span class="fc" id="L46">		return service.getProductByName(name);</span>
+	}
+
+	@ApiOperation(value = &quot;Retrieve all Product Records&quot;, response = Product.class)
+	@GetMapping(&quot;/getproducts&quot;)
+	public List&lt;Product&gt; getProducts() {
+<span class="fc" id="L52">		return service.getProducts();</span>
+	}
+
+	@ApiOperation(value = &quot;Delete a Product Record&quot;, response = Product.class)
+	@DeleteMapping(&quot;/delete/{id}&quot;)
+	public String deleteProduct(@PathVariable int id) {
+<span class="fc" id="L58">		return service.deleteProduct(id);</span>
+	}
+
+	@ApiOperation(value = &quot;Update a Product Record&quot;, response = Product.class)
+	@PutMapping(&quot;/update/{id}&quot;)
+	public Product updateProduct(@RequestBody Product product) {
+<span class="fc" id="L64">		return service.updateProduct(product);</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
