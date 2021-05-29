@@ -22,6 +22,13 @@ pipeline {
                bat 'mvn -f ProductCRUD-2/pom.xml test'
             }
     }
+     stage('SonarQube analysis') {
+            steps {
+            withSonarQubeEnv('SonarQube'){
+               bat 'mvn -f ProductCRUD-2/pom.xml clean install sonar:sonar -Dsonar.login=4b896667b82e39361190abc6abdc918ef9faab7b'
+            }
+            }
+    }
     stage('deploy') {
             steps {
               deploy adapters: [tomcat8(credentialsId: '1e0ba6ff-b200-419e-856c-836927a5750c', path: '', url: 'http://localhost:8081/')],
